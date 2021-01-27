@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% block contenu %}
+    <br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Clients:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'nouveau_client' %}">Créer Un Client</a>
+			<table class="table table-sm">
+				<tr>
+                    <th>Identifiant</th>
+					<th>Clients</th>
+					<th>Commandes</th>
+                    <th></th>
+				</tr>
+
+                {% for client in clients %}
+                    <tr>
+                        <td><a href="{% url 'client' client.id %}">{{ client.id }}</a></td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.telephone }}</td>
+                        <td><a href="{% url 'client' client.id %}"><button class="btn btn-info">detail</button></a></td>
+
+                    </tr>
+                {% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Les 5 Dernières Comamndes:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'nouvelle_commande' %}">Ajouter une Commande</a>hjb
+            <table class="table table-sm">
+				<tr>
+					<th>Produit</th>
+					<th>Date de la commande</th>
+					<th>Status</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+
+                {% for commande in commandes %}
+                    <tr>
+                        <td>{{  commande.produit }}</td>
+                        <td>{{ commande.date_cration }}</td>
+                        <td>{{ commande.status }}</td>
+                        <td><a href="{% url 'modifier_commande' commande.id %}"><button class="btn btn-primary">Mise à Jour</button></a></td>
+					    <td><a href=""><button class="btn btn-warning">Supprimer</button></a></td>r
+                    </tr>
+                {% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+
