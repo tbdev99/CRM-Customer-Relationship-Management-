@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+
+{% block contenu %}
+    <form action="{% url 'supprimer_commande' commande.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-success" value="confirmer la suppression">
+    </form>
+{% endblock %}

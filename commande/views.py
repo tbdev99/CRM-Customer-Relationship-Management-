@@ -27,3 +27,10 @@ def modifierCommande(request,pk):
             return redirect('accueil')
     context={'form':form}
     return render(request,'commande/ajouter_commande.html',context)
+def supprimerCommande(request,pk):
+    commande=Commande.objects.get(id = pk)
+    if request.method=='POST':
+        commande.delete()
+        return redirect('accueil')
+    context={"commande":commande}
+    return render(request,'commande/supprimer_commande.html',context)

@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('',views.listCommande),
     path('nouvelle_commande/',views.ajouterCommande,name='nouvelle_commande'),
-path('modifier_commande/<str:pk>/',views.modifierCommande,name='modifier_commande'),
+    path('modifier_commande/<str:pk>/',views.modifierCommande,name='modifier_commande'),
+    path('supprimer_commande/<str:pk>/',views.supprimerCommande,name='supprimer_commande'),
 ]
