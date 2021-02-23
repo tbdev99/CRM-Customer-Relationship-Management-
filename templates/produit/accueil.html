@@ -20,7 +20,7 @@
                         <td><a href="{% url 'client' client.id %}">{{ client.id }}</a></td>
                         <td>{{ client.nom }}</td>
                         <td>{{ client.telephone }}</td>
-                        <td><a href="{% url 'client' client.id %}"><button class="btn btn-info">detail</button></a></td>
+                        <td><a href="{% url 'client' client.id %}"><button class="btn btn-secondary">detail</button></a></td>
 
                     </tr>
                 {% endfor %}
@@ -49,8 +49,8 @@
                         <td>{{  commande.produit }}</td>
                         <td>{{ commande.date_cration }}</td>
                         <td>{{ commande.status }}</td>
-                        <td><a href="{% url 'modifier_commande' commande.id %}"><button class="btn btn-primary">Mise à Jour</button></a></td>
-					    <td><a href="{% url 'supprimer_commande' commande.id %}"><button class="btn btn-warning">Supprimer</button></a></td>r
+                        <td><a href="{% url 'modifier_commande' commande.id %}"><button class="btn btn-light">Mise à Jour</button></a></td>
+					    <td><a href="{% url 'supprimer_commande' commande.id %}"><button class="btn btn-danger">Supprimer</button></a></td>
                     </tr>
                 {% endfor %}
 

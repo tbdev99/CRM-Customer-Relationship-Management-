@@ -3,12 +3,15 @@ from django.http import HttpResponse
 from .models import Client
 from .forms import ClientForm
 from commande.models import Commande
+from commande.filters import CommandeFiltre
 # Create your views here.
 def listClients(request,pk):
     client=Client.objects.get(id=pk)
     commandes=client.commande_set.all()
     quantiteCommande=commandes.count()
-    context={'client':client, 'commandes':commandes ,'quantiteCommandes':quantiteCommande}
+    myfilter = CommandeFiltre(request.GET,queryset=commandes)
+    commandes = myfilter.qs
+    context={'client':client, 'commandes':commandes ,'quantiteCommandes':quantiteCommande,'myfilter':myfilter}
     return render(request,"client/list_client.html",context)
 
 def creer_client(request):
